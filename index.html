@@ -81,55 +81,196 @@
         }
 
         .main-title { font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: #d4af37; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .section-title { font-family: 'Alex Brush', cursive; font-size: 2.3rem; color: #d4af37; margin-bottom: 20px; }
-        
-        /* IMAGE GALLERY */
-        .img-frame { 
-            width: 100%; border-radius: 15px; overflow: hidden; 
-            border: 2px solid #d4af37; margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        }
-        .img-frame img { width: 100%; display: block; object-fit: cover; }
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of GitZ & Olip</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        /* TAGS */
-        .tag { 
-            background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37;
-            padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; color: #d4af37; margin: 5px;
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+
+            /* === 3D CAMERA === */
+            perspective: 1400px;
+            transform-style: preserve-3d;
+        }
+
+        /* ==== PARALLAX STAR LAYERS ==== */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+                radial-gradient(1px 1px at 80% 70%, #fff, transparent),
+                radial-gradient(2px 2px at 60% 10%, #ddd, transparent);
+            animation: starMove 40s linear infinite;
+            opacity: .35;
+            z-index: -2;
+            transform: translateZ(-600px) scale(2);
+        }
+
+        @keyframes starMove {
+            from { transform: translateY(0) translateZ(-600px) scale(2); }
+            to { transform: translateY(-2000px) translateZ(-600px) scale(2); }
+        }
+
+        /* ==== OVERLAY ==== */
+        .overlay {
+            position: fixed; inset: 0;
+            background: #0f0c29;
+            z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            transition: 1.2s;
+        }
+
+        .overlay-content {
+            transform: translateZ(120px);
+        }
+
+        .overlay-content h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            text-shadow: 0 20px 40px rgba(0,0,0,.6);
+        }
+
+        .btn-open {
+            padding: 14px 40px;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn-open:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        /* ==== MAIN CONTAINER FLOAT ==== */
+        .main-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 20px;
+            transform-style: preserve-3d;
+        }
+
+        /* ==== SECTION DEPTH ==== */
+        .scroll-section {
+            padding: 60px 0;
+            display: flex; flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            transform-style: preserve-3d;
+        }
+
+        /* ==== CARD 3D ==== */
+        .card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(14px);
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(212,175,55,0.2);
+            width: 100%;
+            margin-bottom: 25px;
+
+            /* 3D EFFECT */
+            transform: translateZ(80px);
+            box-shadow:
+                0 40px 80px rgba(0,0,0,.6),
+                inset 0 0 40px rgba(255,255,255,.05);
+
+            transition: transform .4s ease, box-shadow .4s ease;
+        }
+
+        .card:hover {
+            transform: translateZ(120px) rotateX(6deg) rotateY(-6deg);
+            box-shadow: 0 60px 120px rgba(0,0,0,.8);
+        }
+
+        /* ==== IMAGES FLOAT ==== */
+        .img-frame {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #d4af37;
+            margin-bottom: 20px;
+
+            transform: translateZ(60px);
+            transition: transform .5s ease;
+        }
+
+        .img-frame:hover {
+            transform: translateZ(140px) scale(1.04);
+        }
+
+        .img-frame img { width: 100%; display: block; }
+
+        .section-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.3rem;
+            color: #d4af37;
+            margin-bottom: 20px;
+            transform: translateZ(100px);
+        }
+
+        .tag {
+            background: rgba(212,175,55,0.1);
+            border: 1px solid #d4af37;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: .75rem;
+            color: #d4af37;
+            margin: 5px;
             display: inline-block;
+
+            transform: translateZ(40px);
         }
 
-        /* RUNDOWN */
-        .rundown-item { 
-            display: flex; justify-content: space-between; 
-            border-bottom: 1px dashed rgba(255,255,255,0.1); padding: 12px 0;
-            font-size: 0.9rem;
+        .btn-map {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #d4af37;
+            color: #0f0c29;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+
+            transform: translateZ(90px);
         }
 
-        /* BUTTONS & INFO */
-        .btn-map { 
-            display: inline-block; margin-top: 25px; padding: 12px 30px; 
-            background: #d4af37; color: #0f0c29; text-decoration: none; 
-            border-radius: 10px; font-weight: bold; transition: 0.3s;
+        .quote {
+            font-style: italic;
+            font-size: .85rem;
+            line-height: 1.7;
+            opacity: .9;
         }
-        .btn-map:hover { background: #f1c40f; }
-
-        .dana-box { background: #0070ba; color: white; padding: 18px; border-radius: 15px; margin-top: 15px; font-weight: bold; font-size: 1rem; }
-
-        .quote { font-style: italic; font-size: 0.85rem; line-height: 1.7; opacity: 0.9; }
-
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
     </style>
 </head>
+
 <body style="overflow: hidden;">
 
-    <div id="guest-overlay" class="overlay">
-        <div class="overlay-content">
-            <h2>WEDDING INVITATION</h2>
-            <h1>GitZ & Olip</h1>
-            <button onclick="mulaiUndangan()" class="btn-open">BUKA UNDANGAN</button>
-        </div>
+<div id="guest-overlay" class="overlay">
+    <div class="overlay-content">
+        <h2>WEDDING INVITATION</h2>
+        <h1>GitZ & Olip</h1>
+        <button onclick="mulaiUndangan()" class="btn-open">BUKA UNDANGAN</button>
     </div>
-
+</div>
+    
     <audio id="weddingMusic" loop>
         <source src="bg.mp3" type="audio/mpeg">
     </audio>
