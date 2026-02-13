@@ -1,21 +1,15 @@
-/* ===== RESET ===== */
-* {
+/* ===== RESET DASAR ===== */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    background: #0f0c29;
-}
-
-body {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
-}
-
+/* Kunci supaya halaman TIDAK bisa melebar */
 html, body {
+    width: 100%;
     overflow-x: hidden;
 }
 
@@ -26,27 +20,20 @@ body {
     color: white;
     min-height: 100vh;
 
-    /* JANGAN pakai flex di body — bikin fixed element kacau */
+    /* penting: jangan pakai vw / flex di body */
     position: relative;
-
-    /* aktifkan GPU layer */
-    transform: translateZ(0);
 }
 
-/* ===== WRAPPER UTAMA (untuk center layout) ===== */
+/* ===== WRAPPER UTAMA (PUSAT LAYOUT) ===== */
 .main-container {
     width: 100%;
     max-width: 450px;
     min-height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin: 0 auto;
     position: relative;
 
-    /* ini penting untuk cegah shifting */
+    /* mencegah elemen anak bikin layout melebar */
     overflow: hidden;
-
-    transform-style: preserve-3d;
 }
 
 /* ===== OVERLAY ===== */
@@ -61,7 +48,7 @@ body {
     justify-content: center;
     text-align: center;
 
-    transition: opacity 1s ease;
+    transition: opacity 0.8s ease;
 }
 
 .overlay-content h1 {
@@ -85,8 +72,7 @@ body {
     display: none;
     width: 100%;
     padding: 60px 20px 100px;
-
-    animation: fadeIn 0.8s ease;
+    animation: fadeIn 0.6s ease;
 }
 
 .section.active {
@@ -95,22 +81,16 @@ body {
 
 /* ===== CARD ===== */
 .card {
-    background: rgba(255, 255, 255, 0.05);
-
-    /* fallback dulu */
-    background-color: rgba(255,255,255,0.05);
-
-    /* blur hanya jika didukung */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,175,55,0.3);
     padding: 40px 20px;
     border-radius: 25px;
     text-align: center;
 
-    /* optimasi render */
-    transform: translateZ(0);
+    /* fallback kalau blur tidak didukung */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -132,48 +112,48 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    width: 100%;
 }
 
 .photo-box {
+    width: 100%;
     height: 150px;
     border-radius: 15px;
     overflow: hidden;
     border: 2px solid #d4af37;
-
-    transform: translateZ(0);
 }
 
 .photo-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* ===== BOTTOM NAV ===== */
 .bottom-nav {
     position: fixed;
-    left: 50%;
     bottom: 0;
+    left: 50%;
     transform: translateX(-50%);
 
-    width: min(100%, 450px);
-    height: auto;
+    width: 100%;
+    max-width: 450px;
 
-    background: rgba(15, 12, 41, 0.92);
-    backdrop-filter: blur(8px);
+    background: rgba(15,12,41,0.95);
+    border-top: 1px solid #d4af37;
 
     display: flex;
     justify-content: space-around;
     padding: 15px 0;
-
-    border-top: 1px solid #d4af37;
     z-index: 1000;
 }
+
 .nav-btn {
     text-align: center;
     color: #777;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color .3s ease;
 }
 
 .nav-btn.active {
@@ -201,29 +181,8 @@ body {
     font-weight: bold;
 }
 
-/* ===== SAFE 3D SCENE ===== */
-#scene-3d {
-    perspective: 1200px;
-    transform-style: preserve-3d;
-}
-
-/* Nonaktifkan efek hover di mobile (tidak ada hover di HP!) */
-@media (hover: none) {
-    .card:hover {
-        transform: none;
-    }
-}
-
-/* ===== ANIMATION ===== */
+/* ===== ANIMASI ===== */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* === Anti layout drift (Mobile Chrome fix) === */
-.section,
-.card,
-.gallery-grid,
-.photo-box {
-    max-width: 100%;
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
