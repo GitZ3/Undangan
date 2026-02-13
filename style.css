@@ -37,11 +37,16 @@ body {
 .main-container {
     width: 100%;
     max-width: 450px;
-    margin: 0 auto;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+
     position: relative;
 
+    /* ini penting untuk cegah shifting */
+    overflow: hidden;
+
     transform-style: preserve-3d;
-    will-change: transform;
 }
 
 /* ===== OVERLAY ===== */
@@ -147,12 +152,12 @@ body {
 /* ===== BOTTOM NAV ===== */
 .bottom-nav {
     position: fixed;
-    bottom: 0;
     left: 50%;
+    bottom: 0;
     transform: translateX(-50%);
 
-    width: 100%;
-    max-width: 450px;
+    width: min(100%, 450px);
+    height: auto;
 
     background: rgba(15, 12, 41, 0.92);
     backdrop-filter: blur(8px);
@@ -164,7 +169,6 @@ body {
     border-top: 1px solid #d4af37;
     z-index: 1000;
 }
-
 .nav-btn {
     text-align: center;
     color: #777;
@@ -214,4 +218,12 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Anti layout drift (Mobile Chrome fix) === */
+.section,
+.card,
+.gallery-grid,
+.photo-box {
+    max-width: 100%;
 }
