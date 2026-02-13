@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of GitZCall911 & Someone</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="guest-overlay" class="overlay">
+        <div class="overlay-content">
+            <p>Dear Guests,</p>
+            <h1>GitZCall911 & Someone</h1>
+            <button onclick="mulaiUndangan()" class="btn-open">
+                <i class="fas fa-envelope-open-text"></i> Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <audio id="weddingMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="home" class="section active">
+        <div class="card">
+            <div class="sakura-ornament">🌸</div>
+            <p class="top-text">THE WEDDING OF</p>
+            <h1 class="main-title">GitZCall911</h1>
+            <div class="and-symbol">&</div>
+            <h1 class="main-title">Someone</h1>
+            <hr class="gold-line">
+            <p class="date-text">SABTU, 14 FEBRUARI 2026</p>
+            <p class="location-preview">Villa Handap Bapak Aing</p>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <h2 class="section-title">Our Gallery</h2>
+        <div class="gallery-grid">
+            <div class="photo-box"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600" alt="Foto 1"></div>
+            <div class="photo-box"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600" alt="Foto 2"></div>
+            <div class="photo-box"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600" alt="Foto 3"></div>
+            <div class="photo-box"><img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?q=80&w=600" alt="Foto 4"></div>
+        </div>
+    </section>
+
+    <section id="location" class="section">
+        <div class="card">
+            <h2 class="section-title">Detail Acara</h2>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <p>09:00 WIB - Selesai</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Villa Handap Bapak Aing</strong><br>Jl. Palm Hill Golf Club, Sentul</p>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="btn-map">LIHAT GOOGLE MAPS</a>
+        </div>
+    </section>
+
+    <nav class="bottom-nav">
+        <div class="nav-btn active" onclick="pindahSection('home', this)">
+            <i class="fas fa-heart"></i>
+            <span>Home</span>
+        </div>
+        <div class="nav-btn" onclick="pindahSection('gallery', this)">
+            <i class="fas fa-images"></i>
+            <span>Gallery</span>
+        </div>
+        <div class="nav-btn" onclick="pindahSection('location', this)">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>Lokasi</span>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
