@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* CSS TOTAL */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -21,80 +20,66 @@
             scroll-behavior: smooth;
         }
 
-        /* Overlay Awal */
+        /* Overlay */
         .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #0f0c29;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: 1s ease-in-out;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0f0c29; z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; transition: 1s ease-in-out;
         }
-
-        .overlay-content h2 { font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 10px; color: #d4af37; }
-        .overlay-content h1 { font-family: 'Alex Brush', cursive; font-size: 3rem; color: #d4af37; margin-bottom: 30px; }
 
         .btn-open {
-            padding: 12px 30px;
-            background: #d4af37;
-            border: none;
-            border-radius: 50px;
-            color: #0f0c29;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            padding: 12px 30px; background: #d4af37; border: none;
+            border-radius: 50px; color: #0f0c29; font-weight: bold;
+            cursor: pointer; box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
 
-        /* Container Utama */
-        .main-container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .main-container { max-width: 500px; margin: 0 auto; padding: 0 20px; }
 
         .scroll-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 80px 0;
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 60px 0;
         }
 
-        /* Hero Section */
-        .main-title { font-family: 'Alex Brush', cursive; font-size: 3.5rem; color: #d4af37; line-height: 1.2; }
-        .gold-line { border: 0; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent); width: 80%; margin: 20px 0; }
-        .date-text { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; }
-        .bounce-arrow { font-size: 2rem; color: #d4af37; margin-top: 30px; animation: bounce 2s infinite; }
+        .card { 
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); 
+            padding: 30px 20px; border-radius: 20px; 
+            border: 1px solid rgba(212,175,55,0.2); width: 100%; margin-bottom: 30px;
+        }
 
-        /* Gallery Section */
-        .section-title { font-family: 'Alex Brush', cursive; font-size: 2.5rem; color: #d4af37; margin-bottom: 30px; }
-        .photo-list { width: 100%; }
-        .photo-box { width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.3); margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .photo-box img { width: 100%; display: block; height: auto; }
+        .main-title { font-family: 'Alex Brush', cursive; font-size: 3.5rem; color: #d4af37; }
+        .section-title { font-family: 'Alex Brush', cursive; font-size: 2.5rem; color: #d4af37; margin-bottom: 20px; }
+        
+        /* List Styling */
+        .list-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+        .tag { 
+            background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37;
+            padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: #d4af37;
+        }
 
-        /* Info Section */
-        .card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 40px 20px; border-radius: 20px; border: 1px solid rgba(212,175,55,0.2); width: 100%; }
-        .info-item { margin: 20px 0; }
-        .info-item i { font-size: 1.5rem; color: #d4af37; margin-bottom: 10px; display: block; }
-        .btn-map { display: inline-block; margin-top: 20px; padding: 12px 25px; background: #d4af37; color: #0f0c29; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        /* Rundown Styling */
+        .rundown-item { 
+            display: flex; justify-content: space-between; 
+            border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 10px 0;
+        }
 
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        .dana-box {
+            background: #0070ba; color: white; padding: 20px;
+            border-radius: 15px; margin-top: 20px; font-weight: bold;
+        }
+
+        .photo-box { width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid #d4af37; margin-bottom: 15px; }
+        .photo-box img { width: 100%; display: block; }
     </style>
 </head>
 <body style="overflow: hidden;">
 
     <div id="guest-overlay" class="overlay">
         <div class="overlay-content">
-            <h2>THE WEDDING OF</h2>
+            <h2 style="letter-spacing: 3px; font-size: 0.8rem;">THE BIG EVENT</h2>
             <h1>GitZCall911 & Someone</h1>
-            <button onclick="mulaiUndangan()" class="btn-open">
-                <i class="fas fa-envelope-open-text"></i> BUKA UNDANGAN
-            </button>
+            <button onclick="mulaiUndangan()" class="btn-open">BUKA UNDANGAN</button>
         </div>
     </div>
 
@@ -105,61 +90,79 @@
     <div class="main-container">
         
         <section class="scroll-section">
-            <p style="letter-spacing: 5px; font-size: 0.7rem; opacity: 0.8;">WELCOME TO OUR BIG DAY</p>
             <h1 class="main-title">GitZCall911</h1>
             <div style="font-size: 1.5rem; color: #d4af37;">&</div>
             <h1 class="main-title">Someone</h1>
-            <hr class="gold-line">
-            <p class="date-text">SABTU, 14 FEBRUARI 2026</p>
-            <p style="font-style: italic; opacity: 0.7;">Scroll ke bawah</p>
-            <div class="bounce-arrow"><i class="fas fa-chevron-down"></i></div>
+            <p style="margin-top: 20px; font-weight: bold;">SABTU, 14 FEBRUARI 2026</p>
+            <p style="opacity: 0.7;">Villa Handap Bapak Aing</p>
         </section>
 
         <section class="scroll-section">
-            <h2 class="section-title">Our Moments</h2>
-            <div class="photo-list">
-                <div class="photo-box"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600" alt="Foto 1"></div>
-                <div class="photo-box"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600" alt="Foto 2"></div>
-                <div class="photo-box"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600" alt="Foto 3"></div>
+            <div class="card">
+                <h2 class="section-title">Tamu Terhormat</h2>
+                <div class="list-container">
+                    <span class="tag">Jastin Biber</span> <span class="tag">Elon Mas</span>
+                    <span class="tag">Donald Tram</span> <span class="tag">Markjubeg</span>
+                    <span class="tag">CR7</span> <span class="tag">Mesi</span>
+                    <span class="tag">Neymar</span> <span class="tag">Augero</span>
+                    <span class="tag">Mr Beast</span> <span class="tag">Putin</span>
+                    <span class="tag">Kim Jong Un</span> <span class="tag">Sukarno</span>
+                    <span class="tag">Hj. Wawan</span> <span class="tag">RT. 02</span> <span class="tag">RT. 04</span>
+                </div>
             </div>
         </section>
 
         <section class="scroll-section">
             <div class="card">
-                <h2 class="section-title" style="font-size: 2rem;">Waktu & Tempat</h2>
-                <div class="info-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <p>Sabtu, 14 Februari 2026</p>
+                <h2 class="section-title">Special Performance</h2>
+                <p style="font-size: 0.8rem; margin-bottom: 15px;">Live Music By:</p>
+                <div class="list-container">
+                    <span class="tag" style="background: #000;">BMTH</span>
+                    <span class="tag" style="background: #000;">BABY METAL</span>
+                    <span class="tag" style="background: #000;">LINKIN PARK</span>
+                    <span class="tag" style="background: #000;">GREEN DAY</span>
+                    <span class="tag" style="background: #000;">AVENGED SEVENFOLD</span>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <p><strong>Villa Handap Bapak Aing</strong><br>Jl. Palm Hill Golf Club, Sentul</p>
-                </div>
-                <a href="https://maps.google.com" target="_blank" class="btn-map">NAVIGASI GOOGLE MAPS</a>
             </div>
-            <p style="margin-top: 50px; font-size: 0.7rem; opacity: 0.5;">© 2026 GitZCall911 & Someone</p>
+        </section>
+
+        <section class="scroll-section">
+            <div class="card">
+                <h2 class="section-title">Acara</h2>
+                <div class="rundown-item"><span>08:00 - 11:00</span> <strong>AKAD</strong></div>
+                <div class="rundown-item"><span>11:00 - 13:00</span> <strong>BREAK / ISHOMA</strong></div>
+                <div class="rundown-item"><span>14:00 - 00:00</span> <strong>THE PARTY</strong></div>
+            </div>
+        </section>
+
+        <section class="scroll-section">
+            <h2 class="section-title">Our Moments</h2>
+            <div class="photo-box"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600"></div>
+            <div class="photo-box"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600"></div>
+        </section>
+
+        <section class="scroll-section">
+            <div class="card">
+                <h2 class="section-title">Wedding Gift</h2>
+                <p>Terima kasih atas doa dan dukungannya.</p>
+                <div class="dana-box">
+                    <i class="fas fa-wallet"></i> DANA : 081234567890
+                </div>
+            </div>
+            <p style="margin-top: 30px; opacity: 0.5; font-size: 0.7rem;">© 2026 GitZCall911 & Someone Event</p>
         </section>
 
     </div>
 
     <script>
         function mulaiUndangan() {
-            const overlay = document.getElementById('guest-overlay');
-            const music = document.getElementById('weddingMusic');
-            
-            // Hilangkan Overlay dengan animasi
-            overlay.style.opacity = '0';
+            document.getElementById('guest-overlay').style.opacity = '0';
             setTimeout(() => {
-                overlay.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Aktifkan scroll
+                document.getElementById('guest-overlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
             }, 1000);
-            
-            // Putar Musik bg.mp3
-            music.play().catch(e => {
-                console.log("Musik gagal diputar otomatis. Browser memblokir autoplay.");
-            });
+            document.getElementById('weddingMusic').play();
         }
     </script>
-
 </body>
 </html>
