@@ -389,19 +389,43 @@
     </div>
 
     <script>
-        function mulaiUndangan() {
-            const overlay = document.getElementById('guest-overlay');
-            const music = document.getElementById('weddingMusic');
-            
-            overlay.style.opacity = '0';
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }, 1200);
-            
-            music.play().catch(e => console.log("Autoplay diblokir browser, musik akan menyusul."));
-        }
-    </script>
+function mulaiUndangan() {
+    const overlay = document.getElementById('guest-overlay');
+    const music = document.getElementById('weddingMusic');
+
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 1200);
+
+    music.play().catch(()=>{});
+}
+
+/* === SAFE 3D PARALLAX === */
+const container = document.querySelector('.main-container');
+
+document.addEventListener('mousemove', e => {
+    if (!container) return;
+
+    const x = (e.clientX / window.innerWidth - 0.5) * 8;
+    const y = (e.clientY / window.innerHeight - 0.5) * -8;
+
+    container.style.transform =
+        `rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+/* Mobile gyro (dibatasi agar tidak blank) */
+window.addEventListener('deviceorientation', e => {
+    if (!container || !e.gamma) return;
+
+    const y = Math.max(Math.min(e.gamma, 15), -15) / 2;
+    const x = Math.max(Math.min(e.beta, 15), -15) / 3;
+
+    container.style.transform =
+        `rotateY(${y}deg) rotateX(${x}deg)`;
+});
+</script>
 </div>
 </body>
 </html>
