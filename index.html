@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of GitZ & Olip</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #0f0c29;
+            background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Overlay Awal */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0f0c29; z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; transition: 1s ease-in-out;
+        }
+
+        .overlay-content h2 { font-size: 0.8rem; letter-spacing: 4px; color: white; opacity: 0.8; margin-bottom: 10px; }
+        .overlay-content h1 { font-family: 'Alex Brush', cursive; font-size: 3.5rem; color: white; margin-bottom: 30px; }
+
+        .btn-open {
+            padding: 12px 35px; background: white; border: none;
+            border-radius: 50px; color: #0f0c29; font-weight: bold;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Layout */
+        .main-container { max-width: 500px; margin: 0 auto; padding: 0 20px; }
+
+        .scroll-section {
+            padding: 40px 0;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+
+        .card { 
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); 
+            padding: 30px 20px; border-radius: 20px; 
+            border: 1px solid rgba(212,175,55,0.2); width: 100%; margin-bottom: 20px;
+        }
+
+        .main-title { font-family: 'Alex Brush', cursive; font-size: 3.2rem; color: #d4af37; }
+        .section-title { font-family: 'Alex Brush', cursive; font-size: 2.2rem; color: #d4af37; margin-bottom: 15px; }
+        
+        /* Image Gallery */
+        .gallery-container { width: 100%; margin: 20px 0; }
+        .img-frame { 
+            width: 100%; border-radius: 15px; overflow: hidden; 
+            border: 2px solid #d4af37; margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .img-frame img { width: 100%; display: block; object-fit: cover; }
+
+        .tag { 
+            background: rgba(212, 175, 55, 0.1); border: 1px solid #d4af37;
+            padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; color: #d4af37; margin: 4px;
+        }
+
+        .rundown-item { 
+            display: flex; justify-content: space-between; 
+            border-bottom: 1px dashed rgba(255,255,255,0.2); padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .btn-map { 
+            display: inline-block; margin-top: 20px; padding: 12px 25px; 
+            background: #d4af37; color: #0f0c29; text-decoration: none; 
+            border-radius: 8px; font-weight: bold;
+        }
+
+        .dana-box { background: #0070ba; color: white; padding: 15px; border-radius: 12px; margin-top: 15px; font-weight: bold; }
+
+        .quote { font-style: italic; font-size: 0.85rem; line-height: 1.6; opacity: 0.9; }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+    </style>
+</head>
+<body style="overflow: hidden;">
+
+    <div id="guest-overlay" class="overlay">
+        <div class="overlay-content">
+            <h2>WEDDING INVITATION</h2>
+            <h1>GitZ & Olip</h1>
+            <button onclick="mulaiUndangan()" class="btn-open">BUKA UNDANGAN</button>
+        </div>
+    </div>
+
+    <audio id="weddingMusic" loop>
+        <source src="bg.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="main-container">
+        
+        <section class="scroll-section" style="min-height: 100vh;">
+            <div class="card">
+                <p style="margin-bottom: 15px; font-size: 0.9rem;">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
+                <p class="quote">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."</p>
+                <p style="margin-top: 10px; font-size: 0.7rem;">(Ar-Rum: 21)</p>
+            </div>
+            <div style="margin-top: 20px; animation: bounce 2s infinite;"><i class="fas fa-chevron-down"></i></div>
+        </section>
+
+        <section class="scroll-section">
+            <h1 class="main-title">GitZ</h1>
+            <p style="font-size: 0.8rem; margin: 5px 0;">Putra dari Keluarga Besar Bapak Aing</p>
+            <div style="font-size: 1.5rem; color: #d4af37; margin: 10px 0;">&</div>
+            <h1 class="main-title">Olip</h1>
+            <p style="font-size: 0.8rem; margin: 5px 0;">Putri dari Keluarga Bapak Sia</p>
+        </section>
+
+        <section class="scroll-section">
+            <h2 class="section-title">Prewedding Gallery</h2>
+            <div class="gallery-container">
+                <div class="img-frame">
+                    <img src="img/image1.jpg" alt="Prewedding 1">
+                </div>
+                <div class="img-frame">
+                    <img src="img/image2.jpg" alt="Prewedding 2">
+                </div>
+                <div class="img-frame">
+                    <img src="img/image3.jpg" alt="Prewedding 1">
+                </div>
+                <div class="img-frame">
+                    <img src="img/image4.jpg" alt="Prewedding 2">
+                </div>
+                <div class="img-frame">
+                    <img src="img/image5.jpg" alt="Prewedding 1">
+                </div>
+                <div class="img-frame">
+                    <img src="img/image6.jpg" alt="Prewedding 2">
+                </div>
+            </div>
+        </section>
+
+        <section class="scroll-section">
+            <div class="card">
+                <h2 class="section-title">Tamu Terhormat</h2>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                    <span class="tag">Jastin Biber</span> <span class="tag">Elon Mas</span>
+                    <span class="tag">Donald Tram</span> <span class="tag">Markjubeg</span>
+                    <span class="tag">CR7</span> <span class="tag">Mesi</span>
+                    <span class="tag">Neymar</span> <span class="tag">Augero</span>
+                    <span class="tag">Mr Beast</span> <span class="tag">Putin</span>
+                    <span class="tag">Kim Jong Un</span> <span class="tag">Sukarno</span>
+                    <span class="tag">Hj. Wawan</span> <span class="tag">RT. 02</span> <span class="tag">RT. 04</span>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="section-title">Special Guest Band</h2>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                    <span class="tag">BMTH</span> <span class="tag">Baby Metal</span>
+                    <span class="tag">Linkin Park</span> <span class="tag">Green Day</span>
+                    <span class="tag">Avenged Sevenfold</span> <span class="tag">Eminem</span> 
+                </div>
+            </div>
+        </section>
+
+        <section class="scroll-section">
+            <div class="card">
+                <h2 class="section-title">Acara & Lokasi</h2>
+                <p style="font-weight: bold; margin-bottom: 10px;">Hari, Tgl Bulan Tahun</p>
+                <div class="rundown-item"><span>08:00 - 11:00</span> <strong>AKAD</strong></div>
+                <div class="rundown-item"><span>12:00 - 13:00</span> <strong>BREAK</strong></div>
+                <div class="rundown-item"><span>14:00 - 00:00</span> <strong>PARTY</strong></div>
+                
+                <div style="margin-top: 30px;">
+                    <i class="fas fa-map-marker-alt" style="color: #d4af37; font-size: 1.5rem;"></i>
+                    <p style="font-size: 0.9rem; margin-top: 10px;"><strong>Villa Handap Bapak Aing</strong><br>Jl. Palm Hill Golf Club</p>
+                    <a href="https://maps.google.com/?q=Villa+Handap+Bapak+Aing" target="_blank" class="btn-map">NAVIGASI KE LOKASI</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="scroll-section">
+            <div class="card">
+                <h2 class="section-title">Wedding Gift</h2>
+                <p style="font-size: 0.8rem; margin-bottom: 10px;">Doa restu Anda adalah hadiah terindah, namun jika ingin memberikan tanda kasih digital:</p>
+                <div class="dana-box">
+                    <i class="fas fa-wallet"></i> DANA : 085126092957
+                </div>
+            </div>
+        </section>
+
+        <section class="scroll-section">
+            <div class="card">
+                <p class="quote">"Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga, apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai."</p>
+                <h1 class="main-title" style="font-size: 2.5rem; margin-top: 20px;">GitZ & Olip</h1>
+                <p style="font-size: 0.7rem; margin-top: 10px;">Beserta Keluarga Besar</p>
+            </div>
+            <p style="margin: 30px 0; opacity: 0.5; font-size: 0.6rem;">© 2026 GitZCall911 Production</p>
+        </section>
+
+    </div>
+
+    <script>
+        function mulaiUndangan() {
+            document.getElementById('guest-overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('guest-overlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 1000);
+            document.getElementById('weddingMusic').play().catch(e => console.log("Musik butuh interaksi user"));
+        }
+    </script>
+</body>
+</html>
